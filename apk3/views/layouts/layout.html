@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {{ .Title }}
+  </title>
+  <script src="apk3/static/js/jquery.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar a.active {
+      position: relative;
+    }
+
+    .navbar {
+      background-color: coral;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      flex-wrap: wrap;
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 16px;
+      transition: background-color 0.3s;
+
+    }
+
+    .navbar a:hover {
+      background-color: #e5734e;
+      border-radius: 5px;
+    }
+
+    /* .navbar .active {
+      background-color: #ff7f50;
+      border-bottom: 3px solid black;
+    } */
+    @media (min-width: 769px) {
+      .navbar a.active::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        /* Turunkan ke luar link agar nempel di bawah navbar */
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggle {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .navbar-left,
+      .navbar-right {
+        margin-left: 16px;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .navbar-left.show,
+      .navbar-right.show {
+        max-height: 500px;
+        /* cukup tinggi untuk semua menu */
+      }
+
+      .navbar a {
+        width: 100%;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    footer {
+      /* padding: 16px; */
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: coral;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <button class="navbar-toggle">☰</button>
+      <div class="navbar-left">
+        <a href="/apk3" class="{{if eq .ActivePage `dashboard`}}active{{end}}">Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="#">Layanan</a>
+        <a href="#">Kontak</a>
+      </div>
+      <div class="navbar-right">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {{ block "content" . }}
+    {{ end }}
+  </main>
+
+  <footer>
+    <p style="text-align: center;vertical-align: middle;font-style: italic;">Hak Cipta © 2025 - Semua Hak Dilindungi.</p>
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      $('.navbar-toggle').click(function() {
+        $('.navbar-left, .navbar-right').toggleClass('show');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+{{ define "content" }}
+
+<h1>
+  Selamat Datang di
+  {{ .Title }}
+</h1>
+<h2>Ini tzmbahan dari satrio</h2>
+<table border="1" id="tblGetData">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Status</th>
+      <th>Aktif</th>
+      <th>Cons</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="99" style="text-align: center;"> Data Kosong</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Add, Edit</h2>
+<table>
+  <tr style="display: none;">
+    <td>Id</td>
+    <td>:</td>
+    <td><input type="text" id="inpId"></td>
+  </tr>
+  <tr>
+    <td>Nama</td>
+    <td>:</td>
+    <td><input type="text" id="inpNama"></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td>:</td>
+    <td><input type="text" id="inpStatus"></td>
+  </tr>
+  <tr>
+    <td>Aktif</td>
+    <td>:</td>
+    <td><input type="text" id="inpAktif"></td>
+  </tr>
+  <tr>
+    <td>Cons</td>
+    <td>:</td>
+    <td><input type="text" id="inpCons"></td>
+  </tr>
+
+  <tr>
+    <td><button onclick="resetInput()">CLEAR</button></td>
+    <td colspan="2" style="text-align: right;"><button style="width: 100%;" onclick="simpan()">SUBMIT</button></td>
+  </tr>
+</table>
+
+<script src="/apk1/static/script.js"></script>
+
+{{ end }}
